@@ -1,0 +1,74 @@
+
+<!-- <form #homeform="ngForm" (ngSubmit)="onSubmit(homeform)">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" name="name" ngModel required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" name="email" ngModel required email>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Colori</mat-label>
+        <mat-select name="color" ngModel>
+          <mat-option value="red">Red</mat-option>
+          <mat-option value="blue">Blue</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    
+    <button mat-raised-button color="primary" type="submit" [disabled]="!homeform.valid">Primary</button>
+
+    <h1>{{nome}}</h1>
+    
+</form> -->
+
+<div>
+    <div>
+        <a routerLink="/signup">signUp</a>
+    </div>
+
+    <div>
+        <a routerLink="/signin">signIn</a>
+    </div>
+
+</div>
+
+<form [formGroup]="homeform" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" name="name" formControlName="nome">
+    </mat-form-field>
+    <p *ngIf="!homeform.get('nome')!.valid && homeform.get('nome')!.touched">inserisci un nome</p>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" name="email" formControlName="email">
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Colori</mat-label>
+        <mat-select name="color" formControlName="color">
+          <mat-option value="red">Red</mat-option>
+          <mat-option value="blue">Blue</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    
+    <button mat-raised-button color="primary" type="submit" [disabled]="!homeform.valid">Primary</button>
+
+    <button mat-raised-button color="primary" (click)="onDeletePersona()">Delete</button>
+    <button mat-raised-button color="primary" (click)="onPatchPersona()">Mod</button>
+    <button mat-raised-button color="primary" (click)="onPutPersona()">Put</button>
+    <!-- <button (click)="onLogOut()">Log Out</button> -->
+
+
+</form>
+
+
+
+
